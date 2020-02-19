@@ -25,15 +25,18 @@ const MainPage = () => {
   if (!data.length) return null;
 
   const currentPoetData = data[0].filter(el => el.fields.lang === language);
-  const mainPageInfo = data[1].filter(el => el.fields.lang === language);
+  const mainPageInfo = data[1][0].fields.data[language];
 
   return (
     <>
-      <Header setLanguage={e => setLanguage(e.target.value)} />
-      <PageInfo data={mainPageInfo[0].fields.data} />
+      <Header
+        setLanguage={e => setLanguage(e.target.value)}
+        language={language}
+      />
+      <PageInfo data={mainPageInfo} />
       <PoetOfTheDay
         data={currentPoetData[0].fields.data.info}
-        header={mainPageInfo[0].fields.data.pod}
+        header={mainPageInfo.pod}
       />
     </>
   );
