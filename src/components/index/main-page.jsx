@@ -1,46 +1,39 @@
 import React, { useState, useEffect } from "react";
-// import uniquid from "uniquid";
 
-import { getMainPageData, getMainInfo } from "./getMainPageData";
+import getMainPageData from "./getMainPageData";
 import getRandomPoet from "./getRandomPoet";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
 
 const MainPage = () => {
-  const [pod, setPod] = useState("");
   const [data, setData] = useState({});
-  const [info, setInfo] = useState({});
   const [language, setLanguage] = useState("ru");
 
-  const getData = async (lang, name) => {
-    setData(await getMainPageData(lang, name));
-    setInfo(await getMainInfo(lang));
+  const getData = async name => {
+    setData(await getMainPageData(name));
   };
 
   useEffect(() => {
     async function fetchData() {
       const poet = await getRandomPoet();
-      setPod(poet);
-      getData(language, poet);
+      getData(poet);
     }
     fetchData();
   }, []);
 
-  const handleLanguageChange = e => {
-    const { value } = e.target;
-    setLanguage(value);
-    getData(value, pod);
-  };
+  if (!data.length) return null;
 
-  if (!data.length || !info.length) return null;
+  const currentPoetData = data[0].filter(el => el.fields.lang === language);
+  const mainPageInfo = data[1].filter(el => el.fields.lang === language);
+
   return (
     <>
-      <Header setLanguage={handleLanguageChange} />
-      <PageInfo info={info[0].fields.data} />
+      <Header setLanguage={e => setLanguage(e.target.value)} />
+      <PageInfo data={mainPageInfo[0].fields.data} />
       <PoetOfTheDay
-        data={data[0].fields.data.info}
-        header={info[0].fields.data.pod}
+        data={currentPoetData[0].fields.data.info}
+        header={mainPageInfo[0].fields.data.pod}
       />
     </>
   );

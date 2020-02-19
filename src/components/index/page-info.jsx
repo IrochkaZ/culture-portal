@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PageInfo = ({ info }) => {
+const PageInfo = ({ data }) => {
   return (
     <div style={{ border: "2px dotted black" }}>
-      <h2>{info.header}</h2>
-      <p>{info.text}</p>
+      <h2>{data.header}</h2>
+      <p>{data.text}</p>
     </div>
   );
 };
 
 PageInfo.propTypes = {
-  info: PropTypes.shape().isRequired
+  data: PropTypes.shape().isRequired
 };
 
 export default PageInfo;
