@@ -2,23 +2,27 @@ import React, { useState, useEffect } from "react";
 // import uniquid from "uniquid";
 
 import { getMainPageData, getMainInfo } from "./getMainPageData";
+import getRandomPoet from "./getRandomPoet";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
 
 const MainPage = () => {
-  const [language, setLanguage] = useState("ru");
+  const [pod, setPod] = useState("");
   const [data, setData] = useState({});
   const [info, setInfo] = useState({});
+  const [language, setLanguage] = useState("ru");
 
-  const getData = async lang => {
-    setData(await getMainPageData(lang));
+  const getData = async (lang, name) => {
+    setData(await getMainPageData(lang, name));
     setInfo(await getMainInfo(lang));
   };
 
   useEffect(() => {
     async function fetchData() {
-      getData(language);
+      const poet = await getRandomPoet();
+      setPod(poet);
+      getData(language, poet);
     }
     fetchData();
   }, []);
@@ -26,7 +30,7 @@ const MainPage = () => {
   const handleLanguageChange = e => {
     const { value } = e.target;
     setLanguage(value);
-    getData(value);
+    getData(value, pod);
   };
 
   if (!data.length || !info.length) return null;
