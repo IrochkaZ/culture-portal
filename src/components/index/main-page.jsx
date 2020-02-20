@@ -10,22 +10,20 @@ const MainPage = () => {
   const [data, setData] = useState({});
   const [language, setLanguage] = useState("ru");
 
-  const getData = async name => {
-    setData(await getMainPageData(name));
-  };
-
   useEffect(() => {
     async function fetchData() {
-      const poet = await getRandomPoet();
-      getData(poet);
+      const response = await getMainPageData();
+      setData(response);
     }
     fetchData();
   }, []);
 
   if (!data.length) return null;
-
-  const currentPoetData = data[0].filter(el => el.fields.lang === language);
-  const mainPageInfo = data[1][0].fields.data[language];
+  const poetsInfo = data.filter(el => el.fields.lang === "multi");
+  const pageInfo = data.filter(el => el.fields.lang === "mainInfo");
+  const todayPoet = getRandomPoet(poetsInfo.length);
+  const todayPoetData = poetsInfo[todayPoet - 1].fields.data[language];
+  const pageMainInfo = pageInfo[0].fields.data[language];
 
   return (
     <>
@@ -33,11 +31,8 @@ const MainPage = () => {
         setLanguage={e => setLanguage(e.target.value)}
         language={language}
       />
-      <PageInfo data={mainPageInfo} />
-      <PoetOfTheDay
-        data={currentPoetData[0].fields.data.info}
-        header={mainPageInfo.pod}
-      />
+      <PageInfo data={pageMainInfo} />
+      <PoetOfTheDay data={todayPoetData} header={pageMainInfo.PoetOfTheDay} />
     </>
   );
 };
