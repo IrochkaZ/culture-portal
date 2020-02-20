@@ -1,7 +1,7 @@
 import React from "react";
 
-const IndexPage = () => {
-  return <h1>hello</h1>;
-};
+import MainPage from "../components/index";
+
+const IndexPage = () => <MainPage />;
 
 export default IndexPage;
