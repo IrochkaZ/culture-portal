@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 
-const Header = ({ setLanguage, language, data, buttonText }) => {
+const Header = ({ setLanguage }) => {
+  const buttons = localStorage.getItem("buttons").split(",");
   return (
     <>
       <a href="./" style={{ fontSize: "24px" }}>
@@ -19,23 +20,17 @@ const Header = ({ setLanguage, language, data, buttonText }) => {
       <button type="button" value="en" onClick={setLanguage}>
         EN
       </button>
-      <Link to="/poets" state={{ data, language, buttonText }}>
-        {buttonText[0]}
-      </Link>
+      <Link to="/poets">{buttons[0]}</Link>
     </>
   );
 };
 
 Header.defaultProps = {
-  language: "ru",
   setLanguage: {}
 };
 
 Header.propTypes = {
-  setLanguage: PropTypes.func,
-  language: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  buttonText: PropTypes.arrayOf(PropTypes.string).isRequired
+  setLanguage: PropTypes.func
 };
 
 export default Header;
