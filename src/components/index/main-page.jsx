@@ -30,6 +30,8 @@ const MainPage = () => {
       <Header
         setLanguage={e => setLanguage(e.target.value)}
         language={language}
+        data={data}
+        buttonText={pageMainInfo.buttons}
       />
       <PageInfo data={pageMainInfo} />
       <PoetOfTheDay data={todayPoetData} header={pageMainInfo.poetOfTheDay} />
