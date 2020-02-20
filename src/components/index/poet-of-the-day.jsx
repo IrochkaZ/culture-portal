@@ -7,7 +7,7 @@ const PoetOfTheDay = ({ data, header }) => {
     <>
       <h2>{header}</h2>
       <h3>{data.name}</h3>
-      <p>{data.dob}</p>
+      <p>{data.dateOfBirth}</p>
       <p>{data.summary}</p>
     </>
   );

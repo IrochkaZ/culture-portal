@@ -32,7 +32,7 @@ const MainPage = () => {
         language={language}
       />
       <PageInfo data={pageMainInfo} />
-      <PoetOfTheDay data={todayPoetData} header={pageMainInfo.PoetOfTheDay} />
+      <PoetOfTheDay data={todayPoetData} header={pageMainInfo.poetOfTheDay} />
     </>
   );
 };

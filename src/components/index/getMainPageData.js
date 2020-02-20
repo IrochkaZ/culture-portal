@@ -1,6 +1,6 @@
-import contentful from "contentful";
+import { createClient } from "contentful";
 
-const client = contentful.createClient({
+const client = createClient({
   space: "fk0dvhht7mqc",
   environment: "raprap",
   accessToken: "F0B2TsvVUAi122zbpjBc8zMc-dTVM1BV6ht3DzuuyHo"
