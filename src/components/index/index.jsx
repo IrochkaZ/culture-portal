@@ -24,7 +24,7 @@ const MainPage = () => {
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo");
   localStorage.setItem("pageInfo", JSON.stringify(pageInfo[0].fields.data));
   const todayPoet = getRandomPoet(poetsInfo.length);
-  const todayPoetData = poetsInfo[todayPoet - 1].fields.data[language];
+  const todayPoetData = poetsInfo[todayPoet - 1].fields;
   localStorage.setItem("poetOfTheDayData", JSON.stringify(todayPoetData));
   const pageMainInfo = pageInfo[0].fields.data[language];
   localStorage.setItem("lang", language);
@@ -36,7 +36,10 @@ const MainPage = () => {
         buttons={pageInfo.buttons}
       />
       <PageInfo data={pageMainInfo} />
-      <PoetOfTheDay data={todayPoetData} header={pageMainInfo.poetOfTheDay} />
+      <PoetOfTheDay
+        data={todayPoetData.data[language]}
+        header={pageMainInfo.poetOfTheDay}
+      />
     </>
   );
 };
