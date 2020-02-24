@@ -5,6 +5,7 @@ import getRandomPoet from "./getRandomPoet";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
+import Timelines from "./timelines";
 
 const MainPage = () => {
   const [data, setData] = useState({});
@@ -35,6 +36,7 @@ const MainPage = () => {
       />
       <PageInfo data={pageMainInfo} />
       <PoetOfTheDay data={todayPoetData} header={pageMainInfo.poetOfTheDay} />
+      <Timelines data={todayPoetData} />
     </>
   );
 };

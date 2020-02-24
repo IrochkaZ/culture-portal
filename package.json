@@ -19,6 +19,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-timeline-scribble": "^1.0.14",
     "uniquid": "^1.1.4"
   },
   "devDependencies": {
