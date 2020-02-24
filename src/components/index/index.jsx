@@ -5,7 +5,7 @@ import getRandomPoet from "./getRandomPoet";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
-import Timelines from "./timelines";
+import PoetsMain from "../pageAuthor/poetsMain";
 
 const MainPage = () => {
   const [data, setData] = useState({});
@@ -25,6 +25,8 @@ const MainPage = () => {
   const todayPoet = getRandomPoet(poetsInfo.length);
   const todayPoetData = poetsInfo[todayPoet - 1].fields.data[language];
   const pageMainInfo = pageInfo[0].fields.data[language];
+  const authorInfo = data.filter(el => el.fields.lang === "writersCommon");
+  const authorInfoItem = authorInfo[0].fields.data[language];
 
   return (
     <>
@@ -36,7 +38,7 @@ const MainPage = () => {
       />
       <PageInfo data={pageMainInfo} />
       <PoetOfTheDay data={todayPoetData} header={pageMainInfo.poetOfTheDay} />
-      <Timelines data={todayPoetData} />
+      <PoetsMain data2={authorInfoItem} data={todayPoetData} />
     </>
   );
 };
