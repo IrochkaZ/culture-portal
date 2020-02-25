@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 
-export default function ListAutors({ data, info }) {
+export default function ListAutors(data, info) {
   const { works } = data;
   const { list } = info;
   const listWorks = works.map(item => (

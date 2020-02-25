@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
+import uniquid from "uniquid";
 
-const Header = ({ setLanguage, language, data, buttonText }) => {
+const Header = ({ setLanguage }) => {
+  const path = JSON.parse(localStorage.getItem("pageInfo")).en.buttons;
+  const buttons = localStorage.getItem("buttons").split(",");
   return (
-    <>
+    <header>
       <a href="./" style={{ fontSize: "24px" }}>
         <span role="img" aria-label="home">
           🏠
@@ -19,23 +22,21 @@ const Header = ({ setLanguage, language, data, buttonText }) => {
       <button type="button" value="en" onClick={setLanguage}>
         EN
       </button>
-      <Link to="/poets" state={{ data, language, buttonText }}>
-        {buttonText[0]}
-      </Link>
-    </>
+      {path.map((el, i) => (
+        <Link to={`/${el.toLowerCase()}`} key={uniquid()}>
+          {buttons[i]}
+        </Link>
+      ))}
+    </header>
   );
 };
 
 Header.defaultProps = {
-  language: "ru",
   setLanguage: {}
 };
 
 Header.propTypes = {
-  setLanguage: PropTypes.func,
-  language: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  buttonText: PropTypes.arrayOf(PropTypes.string).isRequired
+  setLanguage: PropTypes.func
 };
 
 export default Header;
