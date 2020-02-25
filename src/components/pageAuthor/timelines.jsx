@@ -3,9 +3,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Timeline, Event } from "react-timeline-scribble";
 
-function Timelines({ data, info }) {
+function Timelines({ data, pageinfo }) {
   const { dates } = data;
-  const { timeline } = info;
+  const { timeline } = pageinfo;
+  global.console.log(data);
   const datesTimeline = dates.map(item => (
     <Event interval={item[0]} title={item[1]} key={item[0]} />
   ));

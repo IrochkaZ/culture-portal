@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function WriterCard({ data }) {
+const WriterCard = ({ data }) => {
+  global.console.log(data);
   const { name, dateOfBirth, picture, summary } = data;
   return (
     <>
@@ -11,7 +12,7 @@ function WriterCard({ data }) {
       <p>{summary}</p>
     </>
   );
-}
+};
 WriterCard.propTypes = {
   data: PropTypes.shape().isRequired
 };

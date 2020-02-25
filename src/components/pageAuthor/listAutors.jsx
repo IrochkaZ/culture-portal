@@ -1,13 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ListGroup } from "react-bootstrap";
+import uniquid from "uniquid";
 
-export default function ListAutors(data, info) {
+export default function ListAutors({ data, pageinfo }) {
   const { works } = data;
-  const { list } = info;
+  const { list } = pageinfo;
   const listWorks = works.map(item => (
     <>
-      <ListGroup.Item key={item[0]}>{item[0]}</ListGroup.Item>
-      <ListGroup.Item key={item[1]}>{item[1]}</ListGroup.Item>
+      <ListGroup.Item key={uniquid()}>{item[0]}</ListGroup.Item>
+      <ListGroup.Item key={uniquid()}>{item[1]}</ListGroup.Item>
     </>
   ));
   return (
@@ -17,3 +19,7 @@ export default function ListAutors(data, info) {
     </div>
   );
 }
+
+ListAutors.propTypes = {
+  data: PropTypes.shape().isRequired
+};
