@@ -5,6 +5,7 @@ import ListAutors from "../components/pageAuthor/listAutors";
 import Timelines from "../components/pageAuthor/timelines";
 import Gallery from "../components/pageAuthor/gallery";
 import Video from "../components/pageAuthor/video";
+import Maps from "../components/pageAuthor/maps";
 
 export default function Poets({ data, pageInfo, poetsData }) {
   return (
@@ -14,6 +15,7 @@ export default function Poets({ data, pageInfo, poetsData }) {
       <Timelines data={data} pageinfo={pageInfo} />
       <Gallery data={poetsData.images} pageinfo={pageInfo} />
       <Video data={poetsData.video} pageinfo={pageInfo} />
+      <Maps data={poetsData.coords} pageinfo={pageInfo} />
     </>
   );
 }
