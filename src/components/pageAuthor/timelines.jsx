@@ -6,7 +6,6 @@ import { Timeline, Event } from "react-timeline-scribble";
 function Timelines({ data, pageinfo }) {
   const { dates } = data;
   const { timeline } = pageinfo;
-  global.console.log(data);
   const datesTimeline = dates.map(item => (
     <Event interval={item[0]} title={item[1]} key={item[0]} />
   ));

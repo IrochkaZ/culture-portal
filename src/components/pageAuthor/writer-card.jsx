@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const WriterCard = ({ data }) => {
-  global.console.log(data);
   const { name, dateOfBirth, picture, summary } = data;
   return (
     <>
