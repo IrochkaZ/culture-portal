@@ -8,6 +8,7 @@ const Video = data => {
     <>
       <h3>{pageinfo.video}</h3>
       <ReactPlayer
+        controls="true"
         url={data.data}
         youtubeConfig={{ playerVars: { showinfo: 1 } }}
       />
