@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import getMainPageData from "../components/index/getMainPageData";
 import Header from "../components/common/header";
-import TeamMember from "../components/common/team-member";
+import TeamMember from "../components/team-memder/team-member";
 
 const TeamPage = () => {
   const [data, setData] = useState({});

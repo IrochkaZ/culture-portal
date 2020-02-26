@@ -44,6 +44,7 @@ typings/
 
 # Optional eslint cache
 .eslintcache
+.eslintrc
 
 # Optional REPL history
 .node_repl_history
@@ -57,6 +58,7 @@ typings/
 # gatsby files
 .cache/
 public
+gatsby-config.js
 
 # Mac files
 .DS_Store
@@ -68,9 +70,18 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+src/components/common/
+src/components/index/
+src/pages/index.jsx
+src/pages/404.jsx
+
+LICENSE
+README.md
+.prettierignore
 .gitignore
 package-lock.json
-gatsby-config.js
+package.json
+
 acorn
 acorn.cmd
 acorn.ps1
