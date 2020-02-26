@@ -8,10 +8,10 @@ export default function ListAutors({ data, pageinfo }) {
   const { works } = data;
   const { list } = pageinfo;
   const listWorks = works.map(item => (
-    <>
-      <ListGroup.Item key={uniquid()}>{item[0]}</ListGroup.Item>
-      <ListGroup.Item key={uniquid()}>{item[1]}</ListGroup.Item>
-    </>
+    <div key={uniquid()}>
+      <ListGroup.Item>{item[0]}</ListGroup.Item>
+      <ListGroup.Item>{item[1]}</ListGroup.Item>
+    </div>
   ));
   return (
     <div>
