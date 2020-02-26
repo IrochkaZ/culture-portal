@@ -4,6 +4,7 @@ import WriterCard from "../components/pageAuthor/writer-card";
 import ListAutors from "../components/pageAuthor/listAutors";
 import Timelines from "../components/pageAuthor/timelines";
 import Gallery from "../components/pageAuthor/gallery";
+import Video from "../components/pageAuthor/video";
 
 export default function Poets({ data, pageInfo, poetsData }) {
   return (
@@ -11,7 +12,8 @@ export default function Poets({ data, pageInfo, poetsData }) {
       <WriterCard data={data} />
       <ListAutors data={data} pageinfo={pageInfo} />
       <Timelines data={data} pageinfo={pageInfo} />
-      <Gallery data={poetsData} pageinfo={pageInfo} />
+      <Gallery data={poetsData.images} pageinfo={pageInfo} />
+      <Video data={poetsData.video} pageinfo={pageInfo} />
     </>
   );
 }
@@ -19,5 +21,5 @@ Poets.defaultProps = {
   pageInfo: JSON.parse(localStorage.getItem("pageInfo").split(",")).by,
   data: JSON.parse(localStorage.getItem("poetOfTheDayData").split(",")).data.by,
   poetsData: JSON.parse(localStorage.getItem("poetOfTheDayData").split(","))
-    .data.images
+    .data
 };
