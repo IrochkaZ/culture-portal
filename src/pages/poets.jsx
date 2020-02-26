@@ -6,6 +6,7 @@ import Timelines from "../components/pageAuthor/timelines";
 import Gallery from "../components/pageAuthor/gallery";
 import Video from "../components/pageAuthor/video";
 import Maps from "../components/pageAuthor/maps";
+// import Header from "../components/common/header";
 
 export default function Poets({ data, pageInfo, poetsData }) {
   return (
@@ -19,9 +20,15 @@ export default function Poets({ data, pageInfo, poetsData }) {
     </>
   );
 }
+
+const lang = localStorage.getItem("lang") ? localStorage.getItem("lang") : "ru";
+const pageInfo = JSON.parse(localStorage.getItem("pageInfo").split(","));
+const poetData = JSON.parse(localStorage.getItem("poetOfTheDayData").split(","))
+  .data;
+global.console.log(pageInfo[lang]);
 Poets.defaultProps = {
-  pageInfo: JSON.parse(localStorage.getItem("pageInfo").split(",")).by,
-  data: JSON.parse(localStorage.getItem("poetOfTheDayData").split(",")).data.by,
+  pageInfo: pageInfo[lang],
+  data: poetData[lang],
   poetsData: JSON.parse(localStorage.getItem("poetOfTheDayData").split(","))
     .data
 };
