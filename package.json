@@ -25,7 +25,8 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-search-input": "^0.11.3"
   },
   "keywords": [
     "gatsby"
