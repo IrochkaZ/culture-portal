@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import uniquid from "uniquid";
 
 import getMainPageData from "../components/index/getMainPageData";
 import Header from "../components/common/header";
@@ -22,16 +23,14 @@ const TeamPage = () => {
   const pageMainInfo = pageInfo[0].fields.data[language];
   localStorage.setItem("lang", language);
   localStorage.setItem("buttons", pageMainInfo.buttons);
-  let members = Object.values(teamMembers[0].fields.data);
+  const members = Object.values(teamMembers[0].fields.data);
   return (
     <>
       <Header
         setLanguage={e => setLanguage(e.target.value)}
         buttons={pageInfo.buttons}
       />
-      {members.map((item, index) => {
-          return <TeamMember key={index} data={item} />
-        })}
+      {members.map((item) => <TeamMember key={uniquid()} data={item} />)}
     </>
   );
 };
