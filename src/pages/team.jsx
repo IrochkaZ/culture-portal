@@ -26,11 +26,10 @@ const TeamPage = () => {
   const members = Object.values(teamMembers[0].fields.data);
   return (
     <>
-      <Header
-        setLanguage={e => setLanguage(e.target.value)}
-        buttons={pageInfo.buttons}
-      />
-      {members.map((item) => <TeamMember key={uniquid()} data={item} />)}
+      <Header setLanguage={e => setLanguage(e.target.value)} />
+      {members.map(item => {
+        return <TeamMember key={uniquid()} data={item} />;
+      })}
     </>
   );
 };
