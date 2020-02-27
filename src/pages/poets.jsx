@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import WriterCard from "../components/pageAuthor/writer-card";
+import WriterCard from "../components/pageAuthor/writercard";
 import ListAutors from "../components/pageAuthor/listAutors";
 import Timelines from "../components/pageAuthor/timelines";
 import Gallery from "../components/pageAuthor/gallery";
@@ -25,7 +25,6 @@ const lang = localStorage.getItem("lang") ? localStorage.getItem("lang") : "ru";
 const pageInfo = JSON.parse(localStorage.getItem("pageInfo").split(","));
 const poetData = JSON.parse(localStorage.getItem("poetOfTheDayData").split(","))
   .data;
-global.console.log(pageInfo[lang]);
 Poets.defaultProps = {
   pageInfo: pageInfo[lang],
   data: poetData[lang],
