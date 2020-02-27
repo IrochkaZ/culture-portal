@@ -8,7 +8,7 @@ import Video from "../components/pageAuthor/video";
 import Maps from "../components/pageAuthor/maps";
 // import Header from "../components/common/header";
 
-export default function Poets({ data, pageInfo, poetsData }) {
+export default function Poet({ data, pageInfo, poetsData }) {
   return (
     <>
       <WriterCard data={data} />
@@ -25,7 +25,7 @@ const lang = localStorage.getItem("lang") ? localStorage.getItem("lang") : "ru";
 const pageInfo = JSON.parse(localStorage.getItem("pageInfo").split(","));
 const poetData = JSON.parse(localStorage.getItem("poetOfTheDayData").split(","))
   .data;
-Poets.defaultProps = {
+Poet.defaultProps = {
   pageInfo: pageInfo[lang],
   data: poetData[lang],
   poetsData: JSON.parse(localStorage.getItem("poetOfTheDayData").split(","))
