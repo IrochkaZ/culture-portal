@@ -12,6 +12,7 @@ const WriterCard = ({ data }) => {
     </>
   );
 };
+
 WriterCard.propTypes = {
   data: PropTypes.shape().isRequired
 };

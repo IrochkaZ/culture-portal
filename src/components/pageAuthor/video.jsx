@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import React from "react";
 import ReactPlayer from "react-player";
 
@@ -15,5 +14,4 @@ const Video = data => {
     </>
   );
 };
-
 export default Video;

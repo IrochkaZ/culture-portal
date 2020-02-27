@@ -6,6 +6,7 @@ exports.components = {
   "component---src-pages-404-jsx": () => import("./../src/pages/404.jsx" /* webpackChunkName: "component---src-pages-404-jsx" */),
   "component---src-pages-index-jsx": () => import("./../src/pages/index.jsx" /* webpackChunkName: "component---src-pages-index-jsx" */),
   "component---src-pages-poet-jsx": () => import("./../src/pages/poet.jsx" /* webpackChunkName: "component---src-pages-poet-jsx" */),
-  "component---src-pages-team-jsx": () => import("./../src/pages/team.jsx" /* webpackChunkName: "component---src-pages-team-jsx" */)
+  "component---src-pages-team-jsx": () => import("./../src/pages/team.jsx" /* webpackChunkName: "component---src-pages-team-jsx" */),
+  "component---src-pages-new-file-jsx": () => import("./../src/pages/newFile.jsx" /* webpackChunkName: "component---src-pages-new-file-jsx" */)
 }
 

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -10,7 +9,7 @@ export default function Gallery(data) {
   const imagesArray = data.data;
   const img = imagesArray.map(item => (
     <div className="gallery-wrapper" key={uniquid()}>
-      <img className="gallery-img" src={item} />
+      <img className="gallery-img" alt={item} src={item} />
     </div>
   ));
   return (
