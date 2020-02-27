@@ -9,7 +9,6 @@ exports.components = {
   "component---src-pages-404-jsx": hot(preferDefault(require("C:\\Users\\Irushish\\Desktop\\cp v2\\culture-portal\\src\\pages\\404.jsx"))),
   "component---src-pages-index-jsx": hot(preferDefault(require("C:\\Users\\Irushish\\Desktop\\cp v2\\culture-portal\\src\\pages\\index.jsx"))),
   "component---src-pages-poet-jsx": hot(preferDefault(require("C:\\Users\\Irushish\\Desktop\\cp v2\\culture-portal\\src\\pages\\poet.jsx"))),
-  "component---src-pages-team-jsx": hot(preferDefault(require("C:\\Users\\Irushish\\Desktop\\cp v2\\culture-portal\\src\\pages\\team.jsx"))),
-  "component---src-pages-new-file-jsx": hot(preferDefault(require("C:\\Users\\Irushish\\Desktop\\cp v2\\culture-portal\\src\\pages\\newFile.jsx")))
+  "component---src-pages-team-jsx": hot(preferDefault(require("C:\\Users\\Irushish\\Desktop\\cp v2\\culture-portal\\src\\pages\\team.jsx")))
 }
 
