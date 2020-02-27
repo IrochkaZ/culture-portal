@@ -3,7 +3,7 @@ import SearchInput, { createFilter } from "react-search-input";
 import { Link } from "gatsby";
 import Header from "../components/common/header";
 
-const poetsData = JSON.parse(localStorage.poetsData).slice(1); // exclude project members [0] from poets array
+const poetsData = JSON.parse(localStorage.poetsData);
 
 const Poets = () => {
   const [lang, setLang] = useState(localStorage.getItem("lang"));
@@ -21,7 +21,7 @@ const Poets = () => {
       <div>
         <SearchInput
           className="search-input"
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={value => setSearchTerm(value)}
         />
         {filteredPoets.map(poet => {
           const { data } = poet.fields;
