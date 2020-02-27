@@ -7,8 +7,9 @@ import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
 
 const MainPage = () => {
+  const initialLagnuage = localStorage.getItem("lang") || "ru";
   const [data, setData] = useState({});
-  const [language, setLanguage] = useState("ru");
+  const [language, setLanguage] = useState(initialLagnuage);
 
   useEffect(() => {
     async function fetchData() {
