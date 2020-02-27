@@ -1,19 +1,24 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import { Slider } from "react-simple-image-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import "./gallery.css";
 
 export default function Gallery(data) {
   const { pageinfo } = data;
+  const imagesArray = data.data;
+  global.console.log(imagesArray);
+  const img = imagesArray.map(item => (
+    <div className="gallery-wrapper">
+      <img className="gallery-img" src={item} />
+    </div>
+  ));
   return (
     <>
       <h3>{pageinfo.gallery}</h3>
-      <Slider
-        width={450}
-        height={450}
-        maxSwipeThreshold={250 * 0.15}
-        minSwipeThreshold={40}
-        swipeTimeThreshold={100}
-        images={data.data}
-      />
+      <div className="wrapper">
+        <Carousel autoPlay>{img}</Carousel>
+      </div>
     </>
   );
 }

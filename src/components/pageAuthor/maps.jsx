@@ -19,7 +19,7 @@ const Maps = data => {
           height: "50vh",
           width: "50vw"
         }}
-        zoom={[15]}
+        zoom={[6]}
         center={mapsCoordinates}
       >
         <Layer type="symbol" id="marker" layout={{ "icon-image": "marker-15" }}>
