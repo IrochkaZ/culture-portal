@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
 import getMainPageData from "./getMainPageData";
@@ -23,7 +24,12 @@ const MainPage = () => {
   const poetsInfo = data.filter(el => el.fields.lang === "multi");
   localStorage.setItem("poetsData", JSON.stringify(poetsInfo));
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo");
+  const teamMembers = data.filter(el => el.fields.id === "members");
   localStorage.setItem("pageInfo", JSON.stringify(pageInfo[0].fields.data));
+  localStorage.setItem(
+    "teamMembers",
+    JSON.stringify(teamMembers[0].fields.data)
+  );
   const todayPoet = getRandomPoet(poetsInfo.length);
   const todayPoetData = poetsInfo[todayPoet - 1].fields;
   localStorage.setItem("poetOfTheDayData", JSON.stringify(todayPoetData));
