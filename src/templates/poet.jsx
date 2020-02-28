@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import WriterCard from "../components/pageAuthor/writercard";
 import ListAutors from "../components/pageAuthor/listAutors";
 import Timelines from "../components/pageAuthor/timelines";
@@ -7,12 +8,13 @@ import Video from "../components/pageAuthor/video";
 import Maps from "../components/pageAuthor/maps";
 import Header from "../components/common/header";
 
-export default function Poet() {
+const Poet = ({ pageContext }) => {
+  console.log(pageContext);
   const [language, setLanguage] = useState(localStorage.getItem("lang"));
 
-  const dataString = localStorage.getItem("poetOfTheDayData");
-  if (!dataString) return <h2>Error</h2>;
-  const poetData = JSON.parse(dataString.split(",")).data;
+  const poetData = JSON.parse(localStorage.getItem("poetsData"))
+    .map(data => data.fields)
+    .find(fields => fields.id === pageContext.id).data;
   const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
   const { buttons } = pageInfo[language];
   localStorage.setItem("lang", language);
@@ -30,4 +32,10 @@ export default function Poet() {
       <Maps data={poetData.coords} pageinfo={pageInfo[language]} />
     </>
   );
-}
+};
+
+Poet.propTypes = {
+  pageContext: PropTypes.shape().isRequired
+};
+
+export default Poet;
