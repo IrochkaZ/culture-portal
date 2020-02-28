@@ -16,6 +16,9 @@ const Poet = ({ pageContext }) => {
     .map(data => data.fields)
     .find(fields => fields.id === pageContext.id).data;
   const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
+  const { buttons } = pageInfo[language];
+  localStorage.setItem("lang", language);
+  localStorage.setItem("buttons", buttons);
 
   if (!Object.keys(poetData).length) return null;
   return (
