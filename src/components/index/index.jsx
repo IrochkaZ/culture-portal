@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import getMainPageData from "./getMainPageData";
-import getRandomPoet from "./getRandomPoet";
+import setDataToLocalStorage from "./setDataToLocalStorage";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
@@ -21,27 +21,11 @@ const MainPage = () => {
   }, []);
 
   if (!data.length) return null;
-  const poetsInfo = data.filter(el => el.fields.lang === "multi");
-  localStorage.setItem("poetsData", JSON.stringify(poetsInfo));
-  const pageInfo = data.filter(el => el.fields.lang === "mainInfo");
-  const teamMembers = data.filter(el => el.fields.id === "members");
-  localStorage.setItem("pageInfo", JSON.stringify(pageInfo[0].fields.data));
-  localStorage.setItem(
-    "teamMembers",
-    JSON.stringify(teamMembers[0].fields.data)
-  );
-  const todayPoet = getRandomPoet(poetsInfo.length);
-  const todayPoetData = poetsInfo[todayPoet - 1].fields;
-  localStorage.setItem("poetOfTheDayData", JSON.stringify(todayPoetData));
-  const pageMainInfo = pageInfo[0].fields.data[language];
+  setDataToLocalStorage(data, language);
   localStorage.setItem("lang", language);
-  localStorage.setItem("buttons", pageMainInfo.buttons);
-  const worklog = data.filter(el => el.fields.id === "worklog");
-  const difficulties = data.filter(el => el.fields.id === "difficulties");
-  const requirements = data.filter(el => el.fields.id === "requirements");
-  localStorage.setItem("worklog", worklog);
-  localStorage.setItem("difficulties", difficulties);
-  localStorage.setItem("requirements", requirements);
+  const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
+  const pageMainInfo = pageInfo[language];
+  const todayPoetData = JSON.parse(localStorage.getItem("poetOfTheDayData"));
   return (
     <>
       <Header
