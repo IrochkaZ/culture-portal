@@ -36,6 +36,12 @@ const MainPage = () => {
   const pageMainInfo = pageInfo[0].fields.data[language];
   localStorage.setItem("lang", language);
   localStorage.setItem("buttons", pageMainInfo.buttons);
+  const worklog = data.filter(el => el.fields.id === "worklog");
+  const difficulties = data.filter(el => el.fields.id === "difficulties");
+  const requirements = data.filter(el => el.fields.id === "requirements");
+  localStorage.setItem("worklog", worklog);
+  localStorage.setItem("difficulties", difficulties);
+  localStorage.setItem("requirements", requirements);
   return (
     <>
       <Header
