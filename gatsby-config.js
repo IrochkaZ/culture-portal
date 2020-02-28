@@ -5,6 +5,7 @@ module.exports = {
     author: `team 15`
   },
   plugins: [
+<<<<<<< HEAD
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-eslint`,
@@ -17,6 +18,19 @@ module.exports = {
       }
     }
 
+=======
+    // `gatsby-transformer-sharp`,
+    // `gatsby-plugin-sharp`,
+    // "gatsby-plugin-eslint"
+    //   `gatsby-plugin-react-helmet`,
+    //   {
+    //     resolve: `gatsby-source-filesystem`,
+    //     options: {
+    //       name: `images`,
+    //       path: `${__dirname}/src/images`,
+    //     },
+    //   },
+>>>>>>> fix: make some fixes in gitignore and gatsby-config
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
