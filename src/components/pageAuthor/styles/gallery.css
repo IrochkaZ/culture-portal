@@ -1,0 +1,11 @@
+.carousel-slider{
+  width: 30% !important;
+  height: 30% !important;
+}
+.wrapper{
+  width: 50%;
+}
+.axis-horizontal.gallery-img{
+  height: 400px !important;
+  width: 400px !important;
+}
