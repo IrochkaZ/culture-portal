@@ -14,6 +14,9 @@ export default function Poet() {
   if (!dataString) return <h2>Error</h2>;
   const poetData = JSON.parse(dataString.split(",")).data;
   const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
+  const { buttons } = pageInfo[language];
+  localStorage.setItem("lang", language);
+  localStorage.setItem("buttons", buttons);
 
   if (!Object.keys(poetData).length) return null;
   return (
