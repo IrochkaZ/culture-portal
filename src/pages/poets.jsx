@@ -27,7 +27,7 @@ const Poets = () => {
           const { data } = poet.fields;
           return (
             <div className="result" key={poet.fields.id}>
-              <Link className="summary" to={`poet/${poet.fields.id}`}>
+              <Link className="summary" to={`/poet/${poet.fields.id}`}>
                 <p className="poet-name">
                   {data[lang].name}
                   <span className="poet-summary">{data[lang].summary}</span>
