@@ -8,7 +8,7 @@ const Header = ({ setLanguage }) => {
   const buttons = localStorage.getItem("buttons").split(",");
   return (
     <header>
-      <a href="./" style={{ fontSize: "24px" }}>
+      <a href="../" style={{ fontSize: "24px" }}>
         <span role="img" aria-label="home">
           🏠
         </span>

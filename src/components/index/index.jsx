@@ -36,6 +36,7 @@ const MainPage = () => {
       <PoetOfTheDay
         data={todayPoetData.data[language]}
         header={pageMainInfo.poetOfTheDay}
+        id={todayPoetData.id}
       />
     </>
   );
