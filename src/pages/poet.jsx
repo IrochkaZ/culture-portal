@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import WriterCard from "../components/pageAuthor/writercard";
 import ListAutors from "../components/pageAuthor/listAutors";
 import Timelines from "../components/pageAuthor/timelines";

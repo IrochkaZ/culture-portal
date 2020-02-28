@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import ModalVideo from "react-modal-video";
 import PropTypes from "prop-types";
@@ -18,10 +19,12 @@ export default class Video extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, pageinfo } = this.props;
     const { isOpen } = this.state;
+    const { video } = pageinfo;
     return (
       <div>
+        <h3>{video}</h3>
         <ModalVideo
           wmode="transparent"
           channel="youtube"
