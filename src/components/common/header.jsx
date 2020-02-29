@@ -4,6 +4,8 @@ import uniquid from "uniquid";
 import { Button, ButtonGroup, Navbar, Nav } from "react-bootstrap";
 import { FaHome } from "react-icons/fa";
 
+import "../../scss/nav.scss";
+
 const Header = ({ setLanguage, lang, pageInfo }) => {
   const { buttons } = pageInfo[lang];
   const path = pageInfo.en.buttons;

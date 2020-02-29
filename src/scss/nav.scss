@@ -1,15 +1,15 @@
-@import "./pre-customization.scss";
+@import "./variables.scss";
 .navbar-light .navbar-brand {
   padding: 0.2rem;
-  color: $primary;
-  background-color: $secondary;
-  border: 3px solid $primary;
+  color: $primary !important;
+  background-color: $secondary !important;
+  border: 3px solid $primary !important;
   cursor: pointer;
   transition: 0.2s;
 
   &:hover {
-    background-color: $primary;
-    color: $secondary;
+    background-color: $primary !important;
+    color: $secondary !important;
   }
 }
 .nav-link {
