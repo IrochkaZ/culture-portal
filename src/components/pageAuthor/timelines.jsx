@@ -9,7 +9,7 @@ function Timelines({ data, pageinfo }) {
     <Event interval={item[0]} title={item[1]} key={item[0]} />
   ));
   return (
-    <div>
+    <div className="timeline">
       <h3>{timeline}</h3>
       <Timeline>{datesTimeline}</Timeline>
     </div>

@@ -6,6 +6,7 @@ import getMainPageData from "../components/index/getMainPageData";
 import Header from "../components/common/header";
 import WorklogRow from "../components/worklog-row/worklog-row";
 import Requirement from "../components/requirement/requirement";
+import "../scss/worklog.scss";
 
 const WorklogPage = () => {
   const windowGlobal = typeof window !== "undefined" && window;

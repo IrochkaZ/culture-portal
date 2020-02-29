@@ -1,3 +1,13 @@
-.aa {
-background-color:saddlebrown;
+@import "./variables.scss";
+.poet {
+    h3 {
+        color: $primary;
+    }
+
+    .timeline {
+        color: $link-color;
+        div h3 {
+            font-size: 1rem;
+        }
+    }
 }

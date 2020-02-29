@@ -1,22 +1,22 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
-import { ListGroup } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import uniquid from "uniquid";
 
 export default function ListAutors({ data, pageinfo }) {
   const { works } = data;
   const { list } = pageinfo;
   const listWorks = works.map(item => (
-    <div key={uniquid()}>
-      <ListGroup.Item>{item[0]}</ListGroup.Item>
-      <ListGroup.Item>{item[1]}</ListGroup.Item>
-    </div>
+    <tr key={uniquid()}>
+      <td>{item[0]}</td>
+      <td>{item[1]}</td>
+    </tr>
   ));
   return (
     <div>
       <h3>{list}</h3>
-      <ListGroup>{listWorks}</ListGroup>
+      <Table>{listWorks}</Table>
     </div>
   );
 }

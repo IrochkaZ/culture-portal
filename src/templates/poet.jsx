@@ -11,6 +11,8 @@ import Video from "../components/pageAuthor/video";
 import Maps from "../components/pageAuthor/maps";
 import Header from "../components/common/header";
 
+import "../scss/poet.scss";
+
 const Poet = ({ pageContext }) => {
   const windowGlobal = typeof window !== "undefined" && window;
   const [language, setLanguage] = useState("");
@@ -41,7 +43,7 @@ const Poet = ({ pageContext }) => {
         lang={language}
         pageInfo={pageInfo}
       />
-      <Container>
+      <Container className="poet">
         <WriterCard data={poetData[language]} />
         <ListAutors data={poetData[language]} pageinfo={pageInfo[language]} />
         <Timelines data={poetData[language]} pageinfo={pageInfo[language]} />
