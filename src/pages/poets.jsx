@@ -3,8 +3,6 @@ import SearchInput, { createFilter } from "react-search-input";
 import { Link } from "gatsby";
 import Header from "../components/common/header";
 
-const poetsData = JSON.parse(localStorage.poetsData);
-
 const Poets = () => {
   const [lang, setLang] = useState(localStorage.getItem("lang"));
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,6 +10,9 @@ const Poets = () => {
     `fields.data.${lang}.city`,
     `fields.data.${lang}.name`
   ];
+  let { poetsData } = localStorage;
+  if (!poetsData) return null;
+  poetsData = JSON.parse(poetsData);
   const filteredPoets = poetsData.filter(
     createFilter(searchTerm, KEYS_TO_FILTERS)
   );
@@ -27,7 +28,7 @@ const Poets = () => {
           const { data } = poet.fields;
           return (
             <div className="result" key={poet.fields.id}>
-              <Link className="summary" to={`poet/${poet.fields.id}`}>
+              <Link className="summary" to={`/poet/${poet.fields.id}`}>
                 <p className="poet-name">
                   {data[lang].name}
                   <span className="poet-summary">{data[lang].summary}</span>
