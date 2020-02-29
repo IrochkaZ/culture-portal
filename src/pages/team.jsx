@@ -3,22 +3,28 @@ import uniquid from "uniquid";
 
 import Header from "../components/common/header";
 import TeamMember from "../components/team-memder/team-member";
+import getMainPageData from "../components/index/getMainPageData";
 
 const TeamPage = () => {
   const windowGlobal = typeof window !== "undefined" && window;
   const [language, setLanguage] = useState("");
+  const [data, setData] = useState({});
+
   useEffect(() => {
     setLanguage(windowGlobal.localStorage.getItem("lang") || "ru");
+    async function fetchData() {
+      const response = await getMainPageData();
+      setData(response);
+    }
+    fetchData();
   }, []);
 
-  if (!windowGlobal) return null;
-  let members = windowGlobal.localStorage.getItem("teamMembers");
-  const pageInfo = windowGlobal.localStorage.getItem("pageInfo");
-
-  if (!members || !pageInfo) return null;
-
-  members = Object.values(JSON.parse(members));
-  const { buttons } = JSON.parse(pageInfo)[language];
+  if (!windowGlobal || !data.length) return null;
+  let members = data.filter(el => el.fields.id === "members")[0].fields.data;
+  const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
+    .data;
+  members = Object.values(members);
+  const { buttons } = pageInfo[language];
 
   windowGlobal.localStorage.setItem("lang", language);
   windowGlobal.localStorage.setItem("buttons", buttons);
@@ -27,7 +33,7 @@ const TeamPage = () => {
     <>
       <Header setLanguage={e => setLanguage(e.target.value)} />
       {members.map(item => {
-        return <TeamMember key={uniquid()} data={item} />;
+        return <TeamMember key={uniquid()} data={item} lang={language} />;
       })}
     </>
   );

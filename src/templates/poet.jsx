@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+
+import getMainPageData from "../components/index/getMainPageData";
 import WriterCard from "../components/pageAuthor/writercard";
 import ListAutors from "../components/pageAuthor/listAutors";
 import Timelines from "../components/pageAuthor/timelines";
@@ -11,17 +13,24 @@ import Header from "../components/common/header";
 const Poet = ({ pageContext }) => {
   const windowGlobal = typeof window !== "undefined" && window;
   const [language, setLanguage] = useState("");
+  const [data, setData] = useState({});
+
   useEffect(() => {
     setLanguage(windowGlobal.localStorage.getItem("lang"));
+    async function fetchData() {
+      const response = await getMainPageData();
+      setData(response);
+    }
+    fetchData();
   }, []);
 
-  if (!windowGlobal) return null;
-
-  const poetData = JSON.parse(windowGlobal.localStorage.getItem("poetsData"))
-    .map(data => data.fields)
+  if (!windowGlobal || !data.length) return null;
+  const poetsInfo = data.filter(el => el.fields.lang === "multi");
+  const poetData = poetsInfo
+    .map(info => info.fields)
     .find(fields => fields.id === pageContext.id).data;
-  if (!Object.keys(poetData).length) return null;
-  const pageInfo = JSON.parse(windowGlobal.localStorage.getItem("pageInfo"));
+  const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
+    .data;
   const { buttons } = pageInfo[language];
   localStorage.setItem("lang", language);
   localStorage.setItem("buttons", buttons);

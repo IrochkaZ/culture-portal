@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import getMainPageData from "./getMainPageData";
-import setDataToLocalStorage from "./setDataToLocalStorage";
+// import setDataToLocalStorage from "./setDataToLocalStorage";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
@@ -11,11 +11,9 @@ const MainPage = () => {
   const windowGlobal = typeof window !== "undefined" && window;
   const [data, setData] = useState({});
   const [language, setLanguage] = useState("");
-  useEffect(() => {
-    setLanguage(windowGlobal.localStorage.getItem("lang") || "ru");
-  }, []);
 
   useEffect(() => {
+    setLanguage(windowGlobal.localStorage.getItem("lang") || "ru");
     async function fetchData() {
       const response = await getMainPageData();
       setData(response);
@@ -24,7 +22,6 @@ const MainPage = () => {
   }, []);
 
   if (!data.length || !windowGlobal) return null;
-  setDataToLocalStorage(data, language);
   windowGlobal.localStorage.setItem("lang", language);
   const pageInfo = JSON.parse(windowGlobal.localStorage.getItem("pageInfo"));
   const pageMainInfo = pageInfo[language];
