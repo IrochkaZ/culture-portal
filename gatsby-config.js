@@ -9,6 +9,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

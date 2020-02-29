@@ -1,0 +1,24 @@
+.navbar-light .navbar-brand {
+  padding: 0.2rem;
+  color: $primary;
+  background-color: $secondary;
+  border: 3px solid $primary;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: $primary;
+    color: $secondary;
+  }
+}
+.nav-link {
+  margin-right: 1rem;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.navbar-toggler {
+  background-color: $primary;
+}

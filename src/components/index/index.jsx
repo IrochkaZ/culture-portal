@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
 
 import getMainPageData from "./getMainPageData";
 import getRandomPoet from "./getRandomPoet";
@@ -37,12 +38,16 @@ const MainPage = () => {
         pageInfo={pageInfo}
         lang={language}
       />
-      <PageInfo data={pageMainInfo} />
-      <PoetOfTheDay
-        data={todayPoetData.data[language]}
-        header={pageMainInfo.poetOfTheDay}
-        id={todayPoetData.id}
-      />
+      <div className="main-page">
+        <Container className="main-page-container">
+          <PageInfo data={pageMainInfo} />
+          <PoetOfTheDay
+            data={todayPoetData.data[language]}
+            header={pageMainInfo.poetOfTheDay}
+            id={todayPoetData.id}
+          />
+        </Container>
+      </div>
     </>
   );
 };

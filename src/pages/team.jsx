@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import uniquid from "uniquid";
+import { Container, Row } from "react-bootstrap";
 
 import Header from "../components/common/header";
 import TeamMember from "../components/team-memder/team-member";
@@ -34,9 +35,13 @@ const TeamPage = () => {
         lang={language}
         pageInfo={pageInfo}
       />
-      {members.map(item => {
-        return <TeamMember key={uniquid()} data={item} lang={language} />;
-      })}
+      <Container className="team">
+        <Row>
+          {members.map(item => {
+            return <TeamMember key={uniquid()} data={item} lang={language} />;
+          })}
+        </Row>
+      </Container>
     </>
   );
 };

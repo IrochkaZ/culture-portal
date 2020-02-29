@@ -23,3 +23,20 @@ Total: 8h 30min
 | 1h | Build |
 
 Total: 10h
+
+### Olga Bondareva
+| time spent | feature                                           |
+| ------- | ---------------- |
+| 6h | Add styles to project |
+| 1h | Refactoring |
+| 3h | Implement routing between search and author page |
+Total: 10h
+
+### Aliaksand Yanushkevich
+| time spent | feature                                           |
+| ------- | ---------------- |
+| 6h | Implement search page |
+| 3h | Implement style guide page |
+| 1h | Preparing images |
+| 1h | Rafactoring |
+Total: 11h

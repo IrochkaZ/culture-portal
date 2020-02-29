@@ -1,0 +1,16 @@
+@import "./pre-customization.scss";
+@import "./nav.scss";
+@import "./team.scss";
+@import "./main.scss";
+@import "./poets.scss";
+@import "./worklog.scss";
+@import "./poet.scss";
+@import "./error.scss";
+
+body {
+  background-color: $secondary;
+}
+
+a:hover {
+  text-decoration: none;
+}
