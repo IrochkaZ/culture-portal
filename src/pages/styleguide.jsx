@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../scss/styleguide.scss";
 import { Container, Table } from "react-bootstrap";
 import Header from "../components/common/header";
 import getMainPageData from "../components/index/getMainPageData";
