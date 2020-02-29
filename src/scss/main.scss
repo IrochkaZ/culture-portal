@@ -1,0 +1,41 @@
+.main-page {
+  position: relative;
+  height: calc(100vh - 61px);
+  display: block;
+}
+
+.main-page::after {
+  content: "";
+  background-image: url("../images/books.jpg");
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.main-page-header {
+  color: $secondary;
+  h2 {
+    font-size: 4em;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  }
+  p {
+    font-size: 1.5em;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+    font-style: italic;
+  }
+}
+
+.poet-of-the-day {
+  padding: 1em;
+  background: rgba($secondary, 0.8);
+}
+
+.page-not-found {
+  h1 {
+    font-size: 20em;
+  }
+}

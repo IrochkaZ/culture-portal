@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
 
 import getMainPageData from "./getMainPageData";
 import setDataToLocalStorage from "./setDataToLocalStorage";
@@ -32,11 +33,20 @@ const MainPage = () => {
         setLanguage={e => setLanguage(e.target.value)}
         buttons={pageInfo.buttons}
       />
-      <PageInfo data={pageMainInfo} />
-      <PoetOfTheDay
-        data={todayPoetData.data[language]}
-        header={pageMainInfo.poetOfTheDay}
-      />
+      {/* <Container> */}
+      {/* <Jumbotron fluid> */}
+      {/* <Container> */}
+      <div className="main-page">
+        <Container className="main-page-container">
+          <PageInfo data={pageMainInfo} />
+          <PoetOfTheDay
+            data={todayPoetData.data[language]}
+            header={pageMainInfo.poetOfTheDay}
+          />
+        </Container>
+      </div>
+      {/* </Jumbotron> */}
+      {/* </Container> */}
     </>
   );
 };

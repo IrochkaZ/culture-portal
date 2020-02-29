@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import uniquid from "uniquid";
+import { Container, Row } from "react-bootstrap";
 
 import Header from "../components/common/header";
 import TeamMember from "../components/team-memder/team-member";
@@ -18,9 +19,13 @@ const TeamPage = () => {
   return (
     <>
       <Header setLanguage={e => setLanguage(e.target.value)} />
-      {members.map(item => {
-        return <TeamMember key={uniquid()} data={item} />;
-      })}
+      <Container className="team">
+        <Row>
+          {members.map(item => {
+            return <TeamMember key={uniquid()} data={item} />;
+          })}
+        </Row>
+      </Container>
     </>
   );
 };

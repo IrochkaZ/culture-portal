@@ -9,7 +9,6 @@ import Maps from "../components/pageAuthor/maps";
 import Header from "../components/common/header";
 
 const Poet = ({ pageContext }) => {
-  console.log(pageContext);
   const [language, setLanguage] = useState(localStorage.getItem("lang"));
 
   const poetData = JSON.parse(localStorage.getItem("poetsData"))

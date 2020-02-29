@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const PageInfo = ({ data }) => {
   return (
-    <div style={{ border: "2px dotted black" }}>
+    <div className="main-page-header">
       <h2>{data.header}</h2>
       <p>{data.text}</p>
     </div>

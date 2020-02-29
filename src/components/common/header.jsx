@@ -2,31 +2,42 @@ import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import uniquid from "uniquid";
+import { Button, ButtonGroup, Navbar, Nav } from "react-bootstrap";
+import { FaHome } from "react-icons/fa";
 
 const Header = ({ setLanguage }) => {
   const path = JSON.parse(localStorage.getItem("pageInfo")).en.buttons;
   const buttons = localStorage.getItem("buttons").split(",");
   return (
     <header>
-      <a href="./" style={{ fontSize: "24px" }}>
-        <span role="img" aria-label="home">
-          🏠
-        </span>
-      </a>
-      <button type="button" value="ru" onClick={setLanguage}>
-        RU
-      </button>
-      <button type="button" value="by" onClick={setLanguage}>
-        BY
-      </button>
-      <button type="button" value="en" onClick={setLanguage}>
-        EN
-      </button>
-      {path.map((el, i) => (
-        <Link to={`/${el.toLowerCase()}`} key={uniquid()}>
-          {buttons[i]}
-        </Link>
-      ))}
+      <Navbar expand="lg" variant="light">
+        <Navbar.Brand href="./">
+          <FaHome size="2rem" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            {path.map((el, i) => (
+              <Nav.Link href="#home">
+                <Link to={`/${el.toLowerCase()}`} key={uniquid()}>
+                  {buttons[i]}
+                </Link>
+              </Nav.Link>
+            ))}
+          </Nav>
+          <ButtonGroup aria-label="Basic example">
+            <Button type="button" value="ru" onClick={setLanguage}>
+              RU
+            </Button>
+            <Button type="button" value="by" onClick={setLanguage}>
+              BY
+            </Button>
+            <Button type="button" value="en" onClick={setLanguage}>
+              EN
+            </Button>
+          </ButtonGroup>
+        </Navbar.Collapse>
+      </Navbar>
     </header>
   );
 };
