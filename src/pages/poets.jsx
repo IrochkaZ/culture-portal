@@ -28,11 +28,15 @@ const Poets = () => {
           const { data } = poet.fields;
           return (
             <div className="result" key={poet.fields.id}>
-              <Link className="summary" to={`/poet/${poet.fields.id}`}>
-                <p className="poet-name">
-                  {data[lang].name}
-                  <span className="poet-summary">{data[lang].summary}</span>
-                </p>
+              <Link className="result-summary" to={`/poet/${poet.fields.id}`}>
+                <h2 className="result-name">{data[lang].name}</h2>
+                <img
+                  className="result-img"
+                  src={data[lang].picture}
+                  alt={data.name}
+                />
+                <p className="result-life">{data[lang].dateOfBirth}</p>
+                <p className="result-summary">{data[lang].summary}</p>
               </Link>
             </div>
           );
