@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 
 import getMainPageData from "./getMainPageData";
 import getRandomPoet from "./getRandomPoet";
@@ -22,7 +21,14 @@ const MainPage = () => {
     fetchData();
   }, []);
 
-  if (!data.length || !windowGlobal) return null;
+  if (!windowGlobal || !data.length)
+    return (
+      <Spinner
+        animation="grow"
+        style={{ marginTop: "25%", marginLeft: "50%" }}
+      />
+    );
+
   windowGlobal.localStorage.setItem("lang", language);
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;

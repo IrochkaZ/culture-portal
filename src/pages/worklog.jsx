@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Table, Badge } from "react-bootstrap";
+import { Container, Table, Badge, Spinner } from "react-bootstrap";
 import uniquid from "uniquid";
 
 import getMainPageData from "../components/index/getMainPageData";
@@ -21,7 +21,14 @@ const WorklogPage = () => {
     fetchData();
   }, []);
 
-  if (!windowGlobal || !data.length) return null;
+  if (!windowGlobal || !data.length)
+    return (
+      <Spinner
+        animation="grow"
+        style={{ marginTop: "25%", marginLeft: "50%" }}
+      />
+    );
+
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;
   windowGlobal.localStorage.setItem("lang", language);

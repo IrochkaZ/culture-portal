@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchInput, { createFilter } from "react-search-input";
 import { Link } from "gatsby";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 
 import uniquid from "uniquid";
@@ -29,7 +29,13 @@ const Poets = () => {
     `fields.data.${lang}.name`
   ];
 
-  if (!windowGlobal || !data.length) return null;
+  if (!windowGlobal || !data.length)
+    return (
+      <Spinner
+        animation="grow"
+        style={{ marginTop: "25%", marginLeft: "50%" }}
+      />
+    );
   const poetsData = data.filter(el => el.fields.lang === "multi");
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;
