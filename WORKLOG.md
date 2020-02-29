@@ -37,4 +37,6 @@ Total: 10h
 | ------- | ---------------- |
 | 6h | Implement search page |
 | 3h | Implement style guide page |
-Total: 9h
+| 1h | Preparing images |
+| 1h | Rafactoring |
+Total: 11h
