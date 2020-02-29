@@ -29,21 +29,25 @@
     }
   }
 
-  .input-group-text {
-    color: $primary;
-    background-color: $secondary;
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
     border: 3px solid $primary;
-    border-radius: 0;
-  }
-
-  .search-input {
     background-color: $secondary;
-    border-right: 3px solid $primary;
-    border-top: 3px solid $primary;
-    border-bottom: 3px solid $primary;
+
+    input {
+      outline: none;
+      border: none;
+      background-color: transparent;
+    }
 
     input:focus {
       outline: none;
+    }
+
+    svg {
+      color: $primary;
+      margin: 0 20px;
     }
   }
 }

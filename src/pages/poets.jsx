@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchInput, { createFilter } from "react-search-input";
 import { Link } from "gatsby";
-import { Container, InputGroup, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 
 import Header from "../components/common/header";
@@ -44,17 +44,13 @@ const Poets = () => {
         pageInfo={pageInfo}
       />
       <Container className="poets">
-        <InputGroup className="mb-3">
-          <InputGroup.Prepend>
-            <InputGroup.Text id="basic-addon1">
-              <FaSearch />
-            </InputGroup.Text>
-          </InputGroup.Prepend>
+        <div className="search-input-wrapper">
+          <FaSearch />
           <SearchInput
             className="search-input"
             onChange={value => setSearchTerm(value)}
           />
-        </InputGroup>
+        </div>
 
         <Row>
           {filteredPoets.map(poet => {
