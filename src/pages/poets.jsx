@@ -51,14 +51,14 @@ const Poets = () => {
           return (
             <div className="result" key={poet.fields.id}>
               <Link className="result-summary" to={`/poet/${poet.fields.id}`}>
-                <h2 className="result-name">{data[lang].name}</h2>
+                <h2 className="result-name">{info[lang].name}</h2>
                 <img
                   className="result-img"
-                  src={data[lang].picture}
-                  alt={data.name}
+                  src={info[lang].picture}
+                  alt={info[lang].name}
                 />
-                <p className="result-life">{data[lang].dateOfBirth}</p>
-                <p className="result-summary">{data[lang].summary}</p>
+                <p className="result-life">{info[lang].dateOfBirth}</p>
+                <p className="result-summary">{info[lang].summary}</p>
               </Link>
             </div>
           );
@@ -67,5 +67,4 @@ const Poets = () => {
     </>
   );
 };
-
 export default Poets;
