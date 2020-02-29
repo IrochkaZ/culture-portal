@@ -10,7 +10,6 @@ const WorklogPage = () => {
   const windowGlobal = typeof window !== "undefined" && window;
   const [language, setLanguage] = useState("");
   const [data, setData] = useState({});
-  // const [language, setLanguage] = useState(localStorage.getItem("lang"));
 
   useEffect(() => {
     setLanguage(windowGlobal.localStorage.getItem("lang") || "ru");
@@ -22,32 +21,17 @@ const WorklogPage = () => {
   }, []);
 
   if (!windowGlobal || !data.length) return null;
-  // let members = data.filter(el => el.fields.id === "members")[0].fields.data;
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;
-  // members = Object.values(members);
-  // members = members.map(item => item[language].name);
-  // let worklog = data.filter(el => el.fields.id === "worklog");
-  // worklog = Object.values(worklog[0].fields.data);
-  // const difficulties = data.filter(el => el.fields.id === "difficulties");
-  // let requirements = data.filter(el => el.fields.id === "requirements");
-  // requirements = Object.values(requirements[0].fields.data);
-
   windowGlobal.localStorage.setItem("lang", language);
-
-  // if (!data.length) return null;
-  // const pageInfo = data.filter(el => el.fields.lang === "mainInfo");
-  // const pageMainInfo = pageInfo[0].fields.data[language];
-  // localStorage.setItem("lang", language);
-  // localStorage.setItem("buttons", pageMainInfo.buttons);
   let worklog = data.filter(el => el.fields.id === "worklog");
   worklog = Object.values(worklog[0].fields.data);
   const difficulties = data.filter(el => el.fields.id === "difficulties");
   let requirements = data.filter(el => el.fields.id === "requirements");
+  let members = data.filter(el => el.fields.id === "members")[0].fields.data;
   requirements = Object.values(requirements[0].fields.data);
-  let members = localStorage.getItem("teamMembers");
-  members = Object.values(JSON.parse(members));
-  members = members.map(item => item[language].name);
+  members = Object.values(members);
+  members = members.map(item => item.en.name);
   return (
     <>
       <Header
