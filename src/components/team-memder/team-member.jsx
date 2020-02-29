@@ -17,7 +17,7 @@ const TeamMember = ({ data, lang }) => {
           <Card.Title>{data[lang].name}</Card.Title>
           <Card.Text>{data[lang].role}</Card.Text>
           <Card.Link href={data.link} target="_blank">
-            <FaGithubSquare size="4rem"/>
+            <FaGithubSquare size="4rem" />
           </Card.Link>
         </Card.Body>
       </Card>

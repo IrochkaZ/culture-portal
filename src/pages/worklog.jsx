@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Container, Table, Badge } from "react-bootstrap";
 import uniquid from "uniquid";
 
 import getMainPageData from "../components/index/getMainPageData";
 import Header from "../components/common/header";
 import WorklogRow from "../components/worklog-row/worklog-row";
 import Requirement from "../components/requirement/requirement";
-import { Container, Table, Badge } from "react-bootstrap";
 
 const WorklogPage = () => {
   const windowGlobal = typeof window !== "undefined" && window;
@@ -80,7 +80,8 @@ const WorklogPage = () => {
             return <Requirement key={uniquid()} data={item} />;
           })}
         </ul>
-        <Badge>Total points -&nbsp;
+        <Badge>
+          Total points -&nbsp;
           {requirements
             .filter(item => item.status)
             .reduce((sum, item) => {
