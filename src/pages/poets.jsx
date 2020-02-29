@@ -5,6 +5,7 @@ import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 
 import uniquid from "uniquid";
+import "../scss/poets.scss";
 
 import Header from "../components/common/header";
 import getMainPageData from "../components/index/getMainPageData";

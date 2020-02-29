@@ -1,4 +1,5 @@
 import React from "react";
+import "../scss/error.scss";
 
 const NotFoundPage = () => {
   return (
