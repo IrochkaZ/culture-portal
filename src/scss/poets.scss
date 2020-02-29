@@ -1,5 +1,49 @@
-.input-group-text {
+.poets {
+  .row {
+    justify-content: center;
+  }
+
+  .card {
+    margin: 2rem 0;
+    transition: 0.7s;
+
+    &:hover {
+      -webkit-transform: scale(1.06);
+      -ms-transform: scale(1.06);
+      transform: scale(1.06);
+      .card-text {
+        color: $link-color;
+      }
+      .card-footer {
+        color: #f5f6f7;
+      }
+    }
+
+    .card-title {
+      color: $primary;
+    }
+
+    .card-footer {
+      background-color: $primary;
+      color: #f5f6f7;
+    }
+  }
+
+  .input-group-text {
     color: $primary;
     background-color: $secondary;
     border: 3px solid $primary;
+    border-radius: 0;
+  }
+
+  .search-input {
+    background-color: $secondary;
+    border-right: 3px solid $primary;
+    border-top: 3px solid $primary;
+    border-bottom: 3px solid $primary;
+
+    input:focus {
+      outline: none;
+    }
+  }
 }

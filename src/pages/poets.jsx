@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchInput, { createFilter } from "react-search-input";
 import { Link } from "gatsby";
-import { Container, InputGroup } from "react-bootstrap";
+import { Container, InputGroup, Row, Col, Card } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 
 import Header from "../components/common/header";
@@ -43,7 +43,7 @@ const Poets = () => {
         lang={lang}
         pageInfo={pageInfo}
       />
-      <Container>
+      <Container className="poets">
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">
@@ -56,23 +56,30 @@ const Poets = () => {
           />
         </InputGroup>
 
-        {filteredPoets.map(poet => {
-          const info = poet.fields.data;
-          return (
-            <div className="result" key={poet.fields.id}>
-              <Link className="result-summary" to={`/poet/${poet.fields.id}`}>
-                <h2 className="result-name">{info[lang].name}</h2>
-                <img
-                  className="result-img"
-                  src={info[lang].picture}
-                  alt={info[lang].name}
-                />
-                <p className="result-life">{info[lang].dateOfBirth}</p>
-                <p className="result-summary">{info[lang].summary}</p>
-              </Link>
-            </div>
-          );
-        })}
+        <Row>
+          {filteredPoets.map(poet => {
+            const info = poet.fields.data;
+            return (
+              <Col lg={4} md={6} xs={12}>
+                <Card key={poet.fields.id}>
+                  <Link to={`/poet/${poet.fields.id}`}>
+                    <Card.Img
+                      variant="top"
+                      width="30"
+                      src={info[lang].picture}
+                      alt={info[lang].name}
+                    />
+                    <Card.Body>
+                      <Card.Title>{info[lang].name}</Card.Title>
+                      <Card.Text>{info[lang].summary}</Card.Text>
+                    </Card.Body>
+                    <Card.Footer>{info[lang].dateOfBirth}</Card.Footer>
+                  </Link>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
       </Container>
     </>
   );
