@@ -6,4 +6,20 @@
 | 4h         | Implement page with team members                  |
 | 8h         | Implement page with worklog                       |
 
-Total: 17h
+Total: 8h 30min
+
+
+### Andrei Krivets
+| time spent | feature                                           |
+| ------- | ---------------- |
+| 1h | Initial gatsbyjs project |
+| 1h | Configure gatsbyjs project, eslint, etc |
+| 1h | Think about how data files should be organized |
+| 1h | Add information about two poets and main page info |
+| 1h | Main page: add blocks and header |
+| 1h | Add translation |
+| 1h | Add poet of the day block |
+| 2h | Refactoring, code cleaning |
+| 1h | Build |
+
+Total: 10h
