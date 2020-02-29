@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+
+import getMainPageData from "../components/index/getMainPageData";
 import WriterCard from "../components/pageAuthor/writercard";
 import ListAutors from "../components/pageAuthor/listAutors";
 import Timelines from "../components/pageAuthor/timelines";
@@ -9,21 +11,35 @@ import Maps from "../components/pageAuthor/maps";
 import Header from "../components/common/header";
 
 const Poet = ({ pageContext }) => {
-  console.log(pageContext);
-  const [language, setLanguage] = useState(localStorage.getItem("lang"));
+  const windowGlobal = typeof window !== "undefined" && window;
+  const [language, setLanguage] = useState("");
+  const [data, setData] = useState({});
 
-  const poetData = JSON.parse(localStorage.getItem("poetsData"))
-    .map(data => data.fields)
+  useEffect(() => {
+    setLanguage(windowGlobal.localStorage.getItem("lang"));
+    async function fetchData() {
+      const response = await getMainPageData();
+      setData(response);
+    }
+    fetchData();
+  }, []);
+
+  if (!windowGlobal || !data.length) return null;
+  const poetsInfo = data.filter(el => el.fields.lang === "multi");
+  const poetData = poetsInfo
+    .map(info => info.fields)
     .find(fields => fields.id === pageContext.id).data;
-  const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
-  const { buttons } = pageInfo[language];
+  const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
+    .data;
   localStorage.setItem("lang", language);
-  localStorage.setItem("buttons", buttons);
 
-  if (!Object.keys(poetData).length) return null;
   return (
     <>
-      <Header setLanguage={e => setLanguage(e.target.value)} />
+      <Header
+        setLanguage={e => setLanguage(e.target.value)}
+        lang={language}
+        pageInfo={pageInfo}
+      />
       <WriterCard data={poetData[language]} />
       <ListAutors data={poetData[language]} pageinfo={pageInfo[language]} />
       <Timelines data={poetData[language]} pageinfo={pageInfo[language]} />
