@@ -24,14 +24,16 @@ const TeamPage = () => {
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;
   members = Object.values(members);
-  const { buttons } = pageInfo[language];
 
   windowGlobal.localStorage.setItem("lang", language);
-  windowGlobal.localStorage.setItem("buttons", buttons);
 
   return (
     <>
-      <Header setLanguage={e => setLanguage(e.target.value)} />
+      <Header
+        setLanguage={e => setLanguage(e.target.value)}
+        lang={language}
+        pageInfo={pageInfo}
+      />
       {members.map(item => {
         return <TeamMember key={uniquid()} data={item} lang={language} />;
       })}

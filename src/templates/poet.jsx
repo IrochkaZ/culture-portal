@@ -31,13 +31,15 @@ const Poet = ({ pageContext }) => {
     .find(fields => fields.id === pageContext.id).data;
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;
-  const { buttons } = pageInfo[language];
   localStorage.setItem("lang", language);
-  localStorage.setItem("buttons", buttons);
 
   return (
     <>
-      <Header setLanguage={e => setLanguage(e.target.value)} />
+      <Header
+        setLanguage={e => setLanguage(e.target.value)}
+        lang={language}
+        pageInfo={pageInfo}
+      />
       <WriterCard data={poetData[language]} />
       <ListAutors data={poetData[language]} pageinfo={pageInfo[language]} />
       <Timelines data={poetData[language]} pageinfo={pageInfo[language]} />

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import getMainPageData from "./getMainPageData";
-// import setDataToLocalStorage from "./setDataToLocalStorage";
+import getRandomPoet from "./getRandomPoet";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
@@ -23,16 +23,19 @@ const MainPage = () => {
 
   if (!data.length || !windowGlobal) return null;
   windowGlobal.localStorage.setItem("lang", language);
-  const pageInfo = JSON.parse(windowGlobal.localStorage.getItem("pageInfo"));
+  const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
+    .data;
   const pageMainInfo = pageInfo[language];
-  const todayPoetData = JSON.parse(
-    windowGlobal.localStorage.getItem("poetOfTheDayData")
-  );
+  const poetsInfo = data.filter(el => el.fields.lang === "multi");
+  const todayPoet = getRandomPoet(poetsInfo.length);
+  const todayPoetData = poetsInfo[todayPoet - 1].fields;
+
   return (
     <>
       <Header
         setLanguage={e => setLanguage(e.target.value)}
-        buttons={pageInfo.buttons}
+        pageInfo={pageInfo}
+        lang={language}
       />
       <PageInfo data={pageMainInfo} />
       <PoetOfTheDay

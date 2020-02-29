@@ -3,9 +3,9 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import uniquid from "uniquid";
 
-const Header = ({ setLanguage }) => {
-  const path = JSON.parse(localStorage.getItem("pageInfo")).en.buttons;
-  const buttons = localStorage.getItem("buttons").split(",");
+const Header = ({ setLanguage, lang, pageInfo }) => {
+  const { buttons } = pageInfo[lang];
+  const path = pageInfo.en.buttons;
   return (
     <header>
       <a href="../" style={{ fontSize: "24px" }}>
@@ -36,7 +36,9 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  setLanguage: PropTypes.func
+  setLanguage: PropTypes.func,
+  lang: PropTypes.string.isRequired,
+  pageInfo: PropTypes.shape().isRequired
 };
 
 export default Header;

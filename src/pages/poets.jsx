@@ -29,15 +29,18 @@ const Poets = () => {
   const poetsData = data.filter(el => el.fields.lang === "multi");
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;
-  const { buttons } = pageInfo[lang];
   const filteredPoets = poetsData.filter(
     createFilter(searchTerm, KEYS_TO_FILTERS)
   );
   windowGlobal.localStorage.setItem("lang", lang);
-  windowGlobal.localStorage.setItem("buttons", buttons);
+
   return (
     <>
-      <Header setLanguage={e => setLang(e.target.value)} />
+      <Header
+        setLanguage={e => setLang(e.target.value)}
+        lang={lang}
+        pageInfo={pageInfo}
+      />
       <div>
         <SearchInput
           className="search-input"
