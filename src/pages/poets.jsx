@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchInput, { createFilter } from "react-search-input";
 import { Link } from "gatsby";
 import Header from "../components/common/header";
 
 const Poets = () => {
-  const [lang, setLang] = useState(localStorage.getItem("lang"));
+  const windowGlobal = typeof window !== "undefined" && window;
+  const [lang, setLang] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  useEffect(() => {
+    setLang(windowGlobal.localStorage.getItem("lang") || "ru");
+  }, []);
+
   const KEYS_TO_FILTERS = [
     `fields.data.${lang}.city`,
     `fields.data.${lang}.name`
   ];
-  let { poetsData } = localStorage;
+  if (!windowGlobal) return null;
+  let { poetsData } = windowGlobal.localStorage;
   if (!poetsData) return null;
   poetsData = JSON.parse(poetsData);
   const filteredPoets = poetsData.filter(

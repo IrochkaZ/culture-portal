@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import uniquid from "uniquid";
 
 import Header from "../components/common/header";
 import TeamMember from "../components/team-memder/team-member";
 
 const TeamPage = () => {
-  const [language, setLanguage] = useState(localStorage.getItem("lang"));
+  const windowGlobal = typeof window !== "undefined" && window;
+  const [language, setLanguage] = useState("");
+  useEffect(() => {
+    setLanguage(windowGlobal.localStorage.getItem("lang") || "ru");
+  }, []);
 
-  let members = localStorage.getItem("teamMembers");
-  const pageInfo = localStorage.getItem("pageInfo");
+  if (!windowGlobal) return null;
+  let members = windowGlobal.localStorage.getItem("teamMembers");
+  const pageInfo = windowGlobal.localStorage.getItem("pageInfo");
+
   if (!members || !pageInfo) return null;
+
   members = Object.values(JSON.parse(members));
   const { buttons } = JSON.parse(pageInfo)[language];
-  localStorage.setItem("lang", language);
-  localStorage.setItem("buttons", buttons);
+
+  windowGlobal.localStorage.setItem("lang", language);
+  windowGlobal.localStorage.setItem("buttons", buttons);
 
   return (
     <>

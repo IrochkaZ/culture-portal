@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import WriterCard from "../components/pageAuthor/writercard";
 import ListAutors from "../components/pageAuthor/listAutors";
@@ -9,17 +9,23 @@ import Maps from "../components/pageAuthor/maps";
 import Header from "../components/common/header";
 
 const Poet = ({ pageContext }) => {
-  const [language, setLanguage] = useState(localStorage.getItem("lang"));
+  const windowGlobal = typeof window !== "undefined" && window;
+  const [language, setLanguage] = useState("");
+  useEffect(() => {
+    setLanguage(windowGlobal.localStorage.getItem("lang"));
+  }, []);
 
-  const poetData = JSON.parse(localStorage.getItem("poetsData"))
+  if (!windowGlobal) return null;
+
+  const poetData = JSON.parse(windowGlobal.localStorage.getItem("poetsData"))
     .map(data => data.fields)
     .find(fields => fields.id === pageContext.id).data;
-  const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
+  if (!Object.keys(poetData).length) return null;
+  const pageInfo = JSON.parse(windowGlobal.localStorage.getItem("pageInfo"));
   const { buttons } = pageInfo[language];
   localStorage.setItem("lang", language);
   localStorage.setItem("buttons", buttons);
 
-  if (!Object.keys(poetData).length) return null;
   return (
     <>
       <Header setLanguage={e => setLanguage(e.target.value)} />

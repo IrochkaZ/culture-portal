@@ -1,4 +1,3 @@
-/* eslint-disable react/style-prop-object */
 import React from "react";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
@@ -9,17 +8,19 @@ const Maps = data => {
     accessToken:
       "pk.eyJ1IjoiaXJvY2hrYXoiLCJhIjoiY2s3M2tlMnFwMDJ1ZjNucDkxaGsxOHRkdyJ9.15lc19y8loiW30Aw52IvYA"
   });
-
+  const mapStyle = {
+    dark: "mapbox://styles/mapbox/dark-v9"
+  };
   return (
     <>
       <h3>{pageinfo.map}</h3>
       <Map
-        style="mapbox://styles/mapbox/dark-v9"
+        style={mapStyle.dark}
         containerStyle={{
           height: "50vh",
           width: "50vw"
         }}
-        zoom={[6]}
+        zoom={[12]}
         center={mapsCoordinates}
       >
         <Layer type="symbol" id="marker" layout={{ "icon-image": "marker-15" }}>

@@ -8,9 +8,12 @@ import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
 
 const MainPage = () => {
-  const initialLagnuage = localStorage.getItem("lang") || "ru";
+  const windowGlobal = typeof window !== "undefined" && window;
   const [data, setData] = useState({});
-  const [language, setLanguage] = useState(initialLagnuage);
+  const [language, setLanguage] = useState("");
+  useEffect(() => {
+    setLanguage(windowGlobal.localStorage.getItem("lang") || "ru");
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -20,12 +23,14 @@ const MainPage = () => {
     fetchData();
   }, []);
 
-  if (!data.length) return null;
+  if (!data.length || !windowGlobal) return null;
   setDataToLocalStorage(data, language);
-  localStorage.setItem("lang", language);
-  const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
+  windowGlobal.localStorage.setItem("lang", language);
+  const pageInfo = JSON.parse(windowGlobal.localStorage.getItem("pageInfo"));
   const pageMainInfo = pageInfo[language];
-  const todayPoetData = JSON.parse(localStorage.getItem("poetOfTheDayData"));
+  const todayPoetData = JSON.parse(
+    windowGlobal.localStorage.getItem("poetOfTheDayData")
+  );
   return (
     <>
       <Header
