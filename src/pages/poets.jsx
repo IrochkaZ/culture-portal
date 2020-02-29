@@ -50,11 +50,15 @@ const Poets = () => {
           const info = poet.fields.data;
           return (
             <div className="result" key={poet.fields.id}>
-              <Link className="summary" to={`/poet/${poet.fields.id}`}>
-                <p className="poet-name">
-                  {info[lang].name}
-                  <span className="poet-summary">{info[lang].summary}</span>
-                </p>
+              <Link className="result-summary" to={`/poet/${poet.fields.id}`}>
+                <h2 className="result-name">{info[lang].name}</h2>
+                <img
+                  className="result-img"
+                  src={info[lang].picture}
+                  alt={info[lang].name}
+                />
+                <p className="result-life">{info[lang].dateOfBirth}</p>
+                <p className="result-summary">{info[lang].summary}</p>
               </Link>
             </div>
           );
@@ -63,5 +67,4 @@ const Poets = () => {
     </>
   );
 };
-
 export default Poets;
