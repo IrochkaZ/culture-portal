@@ -1,6 +1,6 @@
 {
   "name": "culture-portal",
-  "private": true,
+  "private": false,
   "description": "culture portal",
   "version": "0.1.0",
   "author": "",
