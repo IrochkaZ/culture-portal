@@ -41,7 +41,7 @@ const Poet = ({ pageContext }) => {
         lang={language}
         pageInfo={pageInfo}
       />
-      <Container>
+      <Container className="poet">
         <WriterCard data={poetData[language]} />
         <ListAutors data={poetData[language]} pageinfo={pageInfo[language]} />
         <Timelines data={poetData[language]} pageinfo={pageInfo[language]} />
