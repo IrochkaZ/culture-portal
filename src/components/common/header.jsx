@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import uniquid from "uniquid";
 import { Button, ButtonGroup, Navbar, Nav } from "react-bootstrap";
@@ -18,10 +17,8 @@ const Header = ({ setLanguage, lang, pageInfo }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {path.map((el, i) => (
-              <Nav.Link key={uniquid()}>
-                <Link to={`/${el.toLowerCase()}`} key={uniquid()}>
-                  {buttons[i]}
-                </Link>
+              <Nav.Link key={uniquid()} href={`/${el.toLowerCase()}`}>
+                {buttons[i]}
               </Nav.Link>
             ))}
           </Nav>

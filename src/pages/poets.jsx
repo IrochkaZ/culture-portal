@@ -4,6 +4,8 @@ import { Link } from "gatsby";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 
+import uniquid from "uniquid";
+
 import Header from "../components/common/header";
 import getMainPageData from "../components/index/getMainPageData";
 
@@ -56,7 +58,7 @@ const Poets = () => {
           {filteredPoets.map(poet => {
             const info = poet.fields.data;
             return (
-              <Col lg={4} md={6} xs={12}>
+              <Col lg={4} md={6} xs={12} key={uniquid()}>
                 <Card key={poet.fields.id}>
                   <Link to={`/poet/${poet.fields.id}`}>
                     <Card.Img
