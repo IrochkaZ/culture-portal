@@ -1,16 +1,25 @@
-const path = require('path');
+const path = require("path");
 
-const authors = ["bahdanovich", "byadulya", "harun", "gilevich", "volsky", "barshchevsky",
-"zhylka", "verba", "luzhanin"];
+const authors = [
+  "bahdanovich",
+  "byadulya",
+  "harun",
+  "gilevich",
+  "volsky",
+  "barshchevsky",
+  "zhylka",
+  "verba",
+  "luzhanin"
+];
 
 exports.createPages = ({ actions }) => {
   const { createPage } = actions;
 
-  const template = path.resolve('./src/templates/poet.jsx');
+  const template = path.resolve("./src/templates/poet.jsx");
 
-  authors.forEach((author) => {
+  authors.forEach(author => {
     createPage({
-      path: 'poet/' + author,
+      path: `poet/${author}`,
       component: template,
 
       context: {
@@ -18,4 +27,19 @@ exports.createPages = ({ actions }) => {
       }
     });
   });
+};
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /mapbox-gl/,
+            use: loaders.null()
+          }
+        ]
+      }
+    });
+  }
 };

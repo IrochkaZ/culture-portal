@@ -5,20 +5,20 @@ import uniquid from "uniquid";
 import { Button, ButtonGroup, Navbar, Nav } from "react-bootstrap";
 import { FaHome } from "react-icons/fa";
 
-const Header = ({ setLanguage }) => {
-  const path = JSON.parse(localStorage.getItem("pageInfo")).en.buttons;
-  const buttons = localStorage.getItem("buttons").split(",");
+const Header = ({ setLanguage, lang, pageInfo }) => {
+  const { buttons } = pageInfo[lang];
+  const path = pageInfo.en.buttons;
   return (
     <header>
       <Navbar expand="lg" variant="light">
-        <Navbar.Brand href="./">
+        <Navbar.Brand href="../">
           <FaHome size="2rem" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {path.map((el, i) => (
-              <Nav.Link href="#home">
+              <Nav.Link key={uniquid()}>
                 <Link to={`/${el.toLowerCase()}`} key={uniquid()}>
                   {buttons[i]}
                 </Link>
@@ -47,7 +47,9 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  setLanguage: PropTypes.func
+  setLanguage: PropTypes.func,
+  lang: PropTypes.string.isRequired,
+  pageInfo: PropTypes.shape().isRequired
 };
 
 export default Header;

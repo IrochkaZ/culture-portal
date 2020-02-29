@@ -3,17 +3,18 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 
 import getMainPageData from "./getMainPageData";
-import setDataToLocalStorage from "./setDataToLocalStorage";
+import getRandomPoet from "./getRandomPoet";
 import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
 
 const MainPage = () => {
-  const initialLagnuage = localStorage.getItem("lang") || "ru";
+  const windowGlobal = typeof window !== "undefined" && window;
   const [data, setData] = useState({});
-  const [language, setLanguage] = useState(initialLagnuage);
+  const [language, setLanguage] = useState("");
 
   useEffect(() => {
+    setLanguage(windowGlobal.localStorage.getItem("lang") || "ru");
     async function fetchData() {
       const response = await getMainPageData();
       setData(response);
@@ -21,32 +22,32 @@ const MainPage = () => {
     fetchData();
   }, []);
 
-  if (!data.length) return null;
-  setDataToLocalStorage(data, language);
-  localStorage.setItem("lang", language);
-  const pageInfo = JSON.parse(localStorage.getItem("pageInfo"));
+  if (!data.length || !windowGlobal) return null;
+  windowGlobal.localStorage.setItem("lang", language);
+  const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
+    .data;
   const pageMainInfo = pageInfo[language];
-  const todayPoetData = JSON.parse(localStorage.getItem("poetOfTheDayData"));
+  const poetsInfo = data.filter(el => el.fields.lang === "multi");
+  const todayPoet = getRandomPoet(poetsInfo.length);
+  const todayPoetData = poetsInfo[todayPoet - 1].fields;
+
   return (
     <>
       <Header
         setLanguage={e => setLanguage(e.target.value)}
-        buttons={pageInfo.buttons}
+        pageInfo={pageInfo}
+        lang={language}
       />
-      {/* <Container> */}
-      {/* <Jumbotron fluid> */}
-      {/* <Container> */}
       <div className="main-page">
         <Container className="main-page-container">
           <PageInfo data={pageMainInfo} />
           <PoetOfTheDay
             data={todayPoetData.data[language]}
             header={pageMainInfo.poetOfTheDay}
+            id={todayPoetData.id}
           />
         </Container>
       </div>
-      {/* </Jumbotron> */}
-      {/* </Container> */}
     </>
   );
 };
