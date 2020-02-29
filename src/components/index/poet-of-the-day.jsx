@@ -11,7 +11,9 @@ const PoetOfTheDay = ({ data, header, id }) => {
       <h3>{data.name}</h3>
       <p>{data.dateOfBirth}</p>
       <p>{data.summary}</p>
-      <Link to={`/poet/${id}`}><FaArrowCircleRight size="2rem"/></Link>
+      <Link to={`/poet/${id}`}>
+        <FaArrowCircleRight size="2rem" />
+      </Link>
     </Col>
   );
 };

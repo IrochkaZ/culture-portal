@@ -46,7 +46,9 @@ const Poets = () => {
       <Container>
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
-            <InputGroup.Text id="basic-addon1"><FaSearch/></InputGroup.Text>
+            <InputGroup.Text id="basic-addon1">
+              <FaSearch />
+            </InputGroup.Text>
           </InputGroup.Prepend>
           <SearchInput
             className="search-input"
