@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Container, Table } from "react-bootstrap";
 import Header from "../components/common/header";
 import getMainPageData from "../components/index/getMainPageData";
 
@@ -27,42 +28,84 @@ const Styleguide = () => {
         lang={lang}
         pageInfo={pageInfo}
       />
-
-      <table>
-        <caption>
-          <h2>Project styleguide</h2>
-        </caption>
-        <tr>
-          <th>Item</th>
-          <th>Example</th>
-        </tr>
-
-        <tr>
-          <td>Headers</td>
-          <td>h1 h2 h3 h4 h5 h6</td>
-        </tr>
-        <tr>
-          <td>Text</td>
-          <td>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. A
-            inventore iste ab earum ipsa, saepe facilis asperiores modi
-            explicabo dolor repellendus nesciunt deserunt error possimus
-            perferendis nisi cum soluta quasi.
-          </td>
-        </tr>
-        <tr>
-          <td>Font</td>
-          <td>Font-family</td>
-        </tr>
-        <tr>
-          <td>Buttons</td>
-          <td>btn example</td>
-        </tr>
-        <tr>
-          <td>Links</td>
-          <td>link example</td>
-        </tr>
-      </table>
+      <Container>
+        <h3>Project styleguide</h3>
+        <p>
+          We use default react-bootstrap styles in our project. To use it you
+          should install it with comand:
+        </p>
+        <code>npm install react-bootstrap bootstrap</code>
+        <Table>
+          <tr>
+            <th>Item</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>Headers</td>
+            <td>
+              <h1>h1 we</h1>
+              <h2>h2 love</h2>
+              <h3>h3 Rolling</h3>
+              <h4>h4 Scopes</h4>
+              <h5>h5 very</h5>
+              <h6>h6 much</h6>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="button" className="btn btn-primary">
+                Button
+              </button>
+            </td>
+            <td>
+              <code>
+                .btn-primary
+                {" {"}
+                <br />
+                &emsp; color: #fff;
+                <br />
+                &emsp; background-color: #7649bc;
+                <br />
+                &emsp; border-color: #7649bc;
+                <br />
+                &#125;
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td className="primary-color">Primary color</td>
+            <td>
+              <code>$primary: #7649bc;</code>
+            </td>
+          </tr>
+          <tr>
+            <td className="secondary-color">
+              <span>Secondary color</span>
+            </td>
+            <td>
+              <code>$secondary: #f5f6f7;</code>
+            </td>
+          </tr>
+          <tr>
+            <td className="link-color">Link color</td>
+            <td>
+              <code>$link-color: #78797b;</code>
+            </td>
+          </tr>
+          <tr>
+            <td className="link-hover-color">Link hover color</td>
+            <td>
+              <code>$link-hover-color: #7649bc;</code>
+            </td>
+          </tr>
+        </Table>
+      </Container>
     </>
   );
 };
