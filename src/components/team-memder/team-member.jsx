@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Col, Card } from "react-bootstrap";
+import { FaGithubSquare } from "react-icons/fa";
 
 const TeamMember = ({ data, lang }) => {
   return (
@@ -16,10 +17,7 @@ const TeamMember = ({ data, lang }) => {
           <Card.Title>{data[lang].name}</Card.Title>
           <Card.Text>{data[lang].role}</Card.Text>
           <Card.Link href={data.link} target="_blank">
-            <img
-              src="https://avatars3.githubusercontent.com/u/9919?s=30&v=30"
-              alt=""
-            />
+            <FaGithubSquare size="4rem"/>
           </Card.Link>
         </Card.Body>
       </Card>

@@ -5,8 +5,7 @@ const Requirement = ({ data }) => {
   return (
     <li>
       <input type="checkbox" defaultChecked={data.status} disabled />
-      <span>{data.points}</span>
-      <span>{data[localStorage.getItem("lang")]}</span>
+      <span>{`${data.points} ${data[localStorage.getItem("lang")]}`}</span>
     </li>
   );
 };

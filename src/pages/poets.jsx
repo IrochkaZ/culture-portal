@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SearchInput, { createFilter } from "react-search-input";
 import { Link } from "gatsby";
+import { Container, InputGroup } from "react-bootstrap";
+import { FaSearch } from "react-icons/fa";
 
 import Header from "../components/common/header";
 import getMainPageData from "../components/index/getMainPageData";
@@ -41,11 +43,17 @@ const Poets = () => {
         lang={lang}
         pageInfo={pageInfo}
       />
-      <div>
-        <SearchInput
-          className="search-input"
-          onChange={value => setSearchTerm(value)}
-        />
+      <Container>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="basic-addon1"><FaSearch/></InputGroup.Text>
+          </InputGroup.Prepend>
+          <SearchInput
+            className="search-input"
+            onChange={value => setSearchTerm(value)}
+          />
+        </InputGroup>
+
         {filteredPoets.map(poet => {
           const info = poet.fields.data;
           return (
@@ -63,7 +71,7 @@ const Poets = () => {
             </div>
           );
         })}
-      </div>
+      </Container>
     </>
   );
 };

@@ -6,7 +6,6 @@ const Styleguide = () => {
   const windowGlobal = typeof window !== "undefined" && window;
   const [lang, setLang] = useState("");
   const [data, setData] = useState({});
-  // const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setLang(windowGlobal.localStorage.getItem("lang") || "ru");

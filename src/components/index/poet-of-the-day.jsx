@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import { Col } from "react-bootstrap";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 const PoetOfTheDay = ({ data, header, id }) => {
   return (
@@ -10,7 +11,7 @@ const PoetOfTheDay = ({ data, header, id }) => {
       <h3>{data.name}</h3>
       <p>{data.dateOfBirth}</p>
       <p>{data.summary}</p>
-      <Link to={`/poet/${id}`}>LINK</Link>
+      <Link to={`/poet/${id}`}><FaArrowCircleRight size="2rem"/></Link>
     </Col>
   );
 };

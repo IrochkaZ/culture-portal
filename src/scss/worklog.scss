@@ -1,0 +1,24 @@
+table {
+  border-collapse: separate;
+  border-spacing: 0 5px;
+}
+
+thead th {
+    background-color: $primary;
+    color: $secondary;
+}
+
+.badge {
+    background-color: $primary;
+    color: $secondary;
+    font-size: 1rem;
+}
+
+.worklog {
+    ul {
+        list-style-type: none;
+    }
+    input {
+        margin-right: 1em;
+    }
+}
