@@ -13,7 +13,7 @@
 
 ### Useful links
 
-* [Site](https:https://fpoetsofbelarus.netlify.com/)
+* [Site](https://fpoetsofbelarus.netlify.com/)
 
 ### Our team #15
 
@@ -24,7 +24,7 @@
 * [Iryna Zaletko](https://github.com/IrochkaZ)
 
 
-###Worklog:
+### Worklog:
 
 #### Nikolai Shkrabkov
 | time spent | feature                                           |
