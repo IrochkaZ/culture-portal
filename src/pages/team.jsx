@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import uniquid from "uniquid";
 import { Container, Row, Spinner } from "react-bootstrap";
 
+import "../scss/team.scss";
+
 import Header from "../components/common/header";
 import TeamMember from "../components/team-memder/team-member";
 import getMainPageData from "../components/index/getMainPageData";
