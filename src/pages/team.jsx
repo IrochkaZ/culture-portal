@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import uniquid from "uniquid";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
 
 import Header from "../components/common/header";
 import TeamMember from "../components/team-memder/team-member";
@@ -20,7 +20,13 @@ const TeamPage = () => {
     fetchData();
   }, []);
 
-  if (!windowGlobal || !data.length) return null;
+  if (!windowGlobal || !data.length)
+    return (
+      <Spinner
+        animation="grow"
+        style={{ marginTop: "25%", marginLeft: "50%" }}
+      />
+    );
   let members = data.filter(el => el.fields.id === "members")[0].fields.data;
   const pageInfo = data.filter(el => el.fields.lang === "mainInfo")[0].fields
     .data;
