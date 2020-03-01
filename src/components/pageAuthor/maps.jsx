@@ -9,7 +9,7 @@ const Maps = data => {
       "pk.eyJ1IjoiaXJvY2hrYXoiLCJhIjoiY2s3M2tlMnFwMDJ1ZjNucDkxaGsxOHRkdyJ9.15lc19y8loiW30Aw52IvYA"
   });
   const mapStyle = {
-    dark: "mapbox://styles/mapbox/dark-v9"
+    dark: "mapbox://styles/mapbox/streets-v11"
   };
   return (
     <>

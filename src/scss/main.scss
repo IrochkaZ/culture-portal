@@ -1,7 +1,9 @@
 @import "./variables.scss";
 .main-page {
+  @media (min-width: 600px) {
+    height: calc(100vh - 22px - 2.5rem);
+  }
   position: relative;
-  height: calc(100vh - 22px - 2.4rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
