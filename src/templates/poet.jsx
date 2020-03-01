@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Container } from "react-bootstrap";
+import "../scss/poet.scss";
+import { Container, Row, Col } from "react-bootstrap";
 
 import getMainPageData from "../components/index/getMainPageData";
 import WriterCard from "../components/pageAuthor/writercard";
@@ -44,8 +45,17 @@ const Poet = ({ pageContext }) => {
       <Container className="poet">
         <WriterCard data={poetData[language]} />
         <ListAutors data={poetData[language]} pageinfo={pageInfo[language]} />
-        <Timelines data={poetData[language]} pageinfo={pageInfo[language]} />
-        <Gallery data={poetData.images} pageinfo={pageInfo[language]} />
+        <Row className="life-story">
+          <Col lg={6}>
+            <Timelines
+              data={poetData[language]}
+              pageinfo={pageInfo[language]}
+            />
+          </Col>
+          <Col lg={6}>
+            <Gallery data={poetData.images} pageinfo={pageInfo[language]} />
+          </Col>
+        </Row>
         <Video data={poetData.video} pageinfo={pageInfo[language]} />
         <Maps data={poetData.coords} pageinfo={pageInfo[language]} />
       </Container>

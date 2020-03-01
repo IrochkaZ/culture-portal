@@ -36,7 +36,13 @@
     border: 3px solid $primary;
     background-color: $secondary;
 
+    .search-input {
+      width: 100%;
+      margin-right: 20px;
+    }
+
     input {
+      width: 100%;
       outline: none;
       border: none;
       background-color: transparent;
