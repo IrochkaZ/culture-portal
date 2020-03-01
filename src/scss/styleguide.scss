@@ -1,0 +1,24 @@
+@import "./variables.scss";
+
+.table td {
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+.primary-color {
+  color: $primary;
+}
+
+.secondary-color span {
+  color: $secondary;
+  background-color: $primary;
+  padding: 0 10px;
+}
+
+.link-color {
+  color: $link-color;
+}
+
+.link-hover-color {
+    color: $primary;
+  }

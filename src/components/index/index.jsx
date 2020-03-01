@@ -7,6 +7,8 @@ import Header from "../common/header";
 import PageInfo from "./page-info";
 import PoetOfTheDay from "./poet-of-the-day";
 
+import "../../scss/main.scss";
+
 const MainPage = () => {
   const windowGlobal = typeof window !== "undefined" && window;
   const [data, setData] = useState({});
